@@ -92,6 +92,9 @@ library('plyr')
 
 ## Recommended Pre Lesson Reading
 
+understand what reflectance is
+
+
 ## Notes for Formatting Lessons
 fill in outline for each module (think about story arc):
 with lesson obj
@@ -115,12 +118,16 @@ Challenge
 |Landsat Multispectral | Moderate (eg 30m)    | 6 broad bands    | ~22/year|
 |NEON hyperspectral | High (eg 1m)         | 424 FIXME narrow bands| 1-2/year|
 
+FIXME: add spectral profile graph and spectral sampling graphs
+FIXME: need to add the cropping portions of the lesson
+
 ## Lesson 1: Opening and Exploring Multispectral and Hyperspectral Imagery
 
 Objective is XXX.
 
 To get started, we'll explore each of the three image datasets used in this module.
-First we'll open and 
+First we'll open and display single bands from the high resolution RGB camera data. Then we'll combine these in a raster
+stack and display them in RGB.
 
 ``` {r}
 # Open RGB camera image
@@ -128,23 +135,76 @@ First we'll open and
 # Create RGB stack
 # Display RGB stack
 ```
-Challenge:
 
-## Lesson 2: Spectral Signatures
+We can also examine the red, green and blue digital number values (0-255) for a pixel and compare values for different pixels.
+Using the code below, click on four different locations (try to find some trees, some grass, some dirt, something impervious) that are fairly far apart.
+``` {r}
+# Click and save point locations
+# FIXME:Assign wavelength values to each band
+# Extract data values from these pixels and examine resulting table
+# Plot the RGB values for these pixels
+# FIXME: Plot the locations of these pixels on the RGB image
+```
+We call each of these lines the "spectral profile" of the pixel. How might you expect these to look different? How different do they look?
 
-Here we'll learn about the spectrum and compare the information content in multi-v-hyper
+Now we'll do the same thing with multispectral Landsat data. We'll read this in a bit differently since each band is in its own file. We'll read in just 6 bands (Landsat 8 has 11 bands total). Use the band centers as the wavelength values.
+|Band Number|Wavelength Region (Band Range)|Band Center|
+|___________|______________________________|___________|
+|2          | blue (450-510 nm)            | 480 nm    |
+|3          | green (530-590 nm)           | 560 nm    |
+|4          | red (640-670 nm)             | 665 nm    |
+|5          | NIR (850-880 nm)             | 865 nm    |
+|6          | SWIR1 (1570-1650 nm)         | 1610 nm   |
+|7          | SWIR2 (2110-2290 nm)         | 2200 nm   |
 
 ``` {r}
-#code goes here
+# Read in single band GeoTIFFS (nice to have loop to read in from dir list)
 ```
+
+Challenge: Create a stack of all 6 Landsat bands and display an RGB image. Plot the spectral profiles of the same four 
+locations as you did in the RGB camera data.
+
+Finally we will open and display the hyperspectral imagery.
+``` {r}
+# read in HDF5 file
+# FIXME: examine metadata
+# FIXME: how to display an RGB composite AND extract spectral data from all bands
+
+Challenge: Explore spectral variation within a tree crown, or within a field of grass. Select a new set of pixel locations (save to new variable) and plot the signatures. 
+
+## Lesson 2: Multispectral vs. Hyperspectral Profiles & Spectral Signatures
+
+Now we'd like to more directly compare multispectral and hyperspectral signatures. However, our Landsat data is at a much coarser spatial resolution than the IS data, making a direct comparison difficult. So instead, we'll simulate the 6 Landsat
+bands from the IS data using the "convolve" function provided below. This function uses something called a "sensor response
+function", which basically says how much of the light at each wavelength in a band range is recorded by the sensor (add
+figure and link to more information)
+
+``` {r}
+# Convolve IS signatures using pre-defined function
+# Plot the 8 spec signatures from each of the images (4 convolved IS-to-Landsat and 4 from IS)
+```
+These spectra differ in four ways (spectral resolution, number of bands, and location of bands). [Add info; refer to 
+table/fig]
+
+We see lots more info... 
+Physics that drive these signatures (nice graphics here)
+
+Basic spectral signatures (building off the physics above)
+
+Challenge: Extract, plot and identify the mystery signatures from the provided coordinates. We'll use these spectra
+moving forward.
 
 ## Lesson 3: Spectral Metrics
 
-Now that we understand the driving forces behind the spectrum, we can explore different ways of capturing that info.
+Now that we understand the driving forces behind the spectrum, we can explore different ways of capturing that information.
+Spectral indices are a popular method for doing this. NDVI example.
 
 ``` {r}
-#code goes here
+# Calculate NDVI with the "Landsat" spectra
+# Calculate narrowband NDVI with the IS spectra
+# Compare values.
 ```
+One of the major benefits of IS data is that we can 
 
 ## Lesson 4: Mapping Spectral Metrics
 
