@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "Lesson Title Goes here"
-date:   2015-1-26 20:49:52
-authors: "FirstName LastName, FirstName LastName"
+title: "Fusing Information from Lidar & Hyperspectral"
+date:   2015-10-23 13:43
+authors: "Keely Roth, Mike Alonzo, Jonah Duckles"
 dateCreated:  2014-11-26 20:49:52
 lastModified: 2015-07-23 14:28:52
 category: time-series-workshop
-tags: [module-1]
+tags: [module-4]
 mainTag: GIS-Spatial-Data
 description: "This post explains the fundamental principles, functions and metadata that you need to work with raster data in R."
 code1: 
@@ -31,70 +31,80 @@ comments: true
 </section><!-- /#table-of-contents -->
 
 ##About
-This activity will walk you through the fundamental principles of working 
-with raster data in R.
+This activity will walk you through a simple example of combining information from both lidar and hyperspectral data.
 
 **R Skill Level:** Intermediate - you've got the basics of `R` down.
 
 <div id="objectives">
 
-<h3>Goals / Objectives</h3>
+##Goals / Objectives
 After completing this activity, you will know:
-<ol>
-<li>What a raster dataset is and its fundamental attributes.</li>
-<li>How to import rasters into `R` using the raster library.</li>
-<li>How to perform raster calculations in `R`.</li>
-</ol>
+(T) load and display raster products from both lidar and hyperspectral modules
+(T) plot hyperspectral metrics on CHM (3D surface)
+pixel-based correlation & scatter plot
+(T) combine the two data products to answer key questions
+(T) create summary stat report (total area statistics)
+(T) create landscape metric report (simple LE mets/spatial stats)
 
-<h3>Things You'll Need To Complete This Lesson</h3>
 
-<h3>R Libraries to Install:</h3>
-<ul>
-<li><strong>raster:</strong> <code> install.packages("raster")</code></li>
-<li><strong>rgdal:</strong> <code> install.packages("rgdal")</code></li>
 
-</ul>
-<h4>Tools To Install</h4>
+##Things You'll Need To Complete This Lesson
+
+###R Libraries to Install:
+
+
+###Tools To Install
 
 Please be sure you have the most current version of `R` and preferably
 R studio to write your code.
 
 
-<h4>Data to Download</h4>
+###Data to Download
 
-Download the raster and *in situ* collected vegetation structure data:
-<ul>
-<li><a href="http://neonhighered.org/Data/LidarActivity/CHM_InSitu_Data.zip" class="btn btn-success"> DOWNLOAD Sample NEON LiDAR data in Raster Format & Vegetation Sampling Data</a></li>
-<li><a href="{{ site.baseurl }}/data/rasterLayers_tif.zip" class="btn btn-success"> DOWNLOAD NEON imagery data (tiff format) California Domain 17 (D17)</a></li>
-</ul>
 
-<p>The LiDAR and imagery data used to create the rasters in this dataset were 
-collected over the San Joaquin field site located in California (NEON Domain 17) 
-and processed at <a href="http://www.neoninc.org" target="_blank" >NEON </a> 
-headquarters. The entire dataset can be accessed by request from the NEON website.</p>  
+###Recommended Pre-Lesson Reading:
 
-<h4>Recommended Pre-Lesson Reading</h4>
-<ul>
-<li>
-<a href="{{ site.baseurl }}/GIS-Spatial-Data/Working-With-Rasters/" target="_blank">
-The Relationship Between Raster Resolution, Spatial extent & Number of Pixels - in R</a>
-</li>
-<li>
-<a href="http://cran.r-project.org/web/packages/raster/raster.pdf" target="_blank">
-Read more about the `raster` package in R.</a>
-</li>
-</ul>
-</div>
+### Lesson 1: Open & Visualize Data Products
 
-#About Raster Data
-Raster or "gridded" data are data that are saved in pixels. In the spatial world, 
-each pixel represents an area on the Earth's surface. For example in the raster 
-below, each pixel represents a particular land cover class that would be found in 
-that location in the real world. 
-<a href="{{ site.baseurl }}/GIS-Spatial-Data/Working-With-Rasters/"> More on 
-rasters here</a>. 
+In this section, you will work with the rasters used in the previous modules (add link to modules), specifically, the
+lidar canopy height model, the spectral metric(s) rasters.
 
-```{r chunk-1}
-#code will go here! 
-
+```{r}
+# display the CHM and metric rasters side by side for each study region 1
+# display and compare region 2
 ```
+
+Now let's create a 3-D surface for one of the spectral metrics using the height data from the CHM
+```{r}
+# add code to create and rotate surface
+```
+
+We can also compare pixel values from the different data types using a scatterplot.
+```{r}
+# create an xy scatterplot from CHM and a spectral metric
+# [would be cool to have a conditional slider to help them visualize pixels]
+```
+Challenge: Compare CHM values and a different spectral metric using this approach
+
+### Lesson 2: Create a fused data product
+
+Here we will combine the binary maps created in (linked modules) from the lidar and hyperspectral data. [The details here
+depend on exploring the data a bit more to create the story arc].
+
+```{r}
+# add raster math for mapping something specific (based on story arc)
+```
+Challenge: Add another layer to your fusion map (i.e., incorporate another metric).
+
+### Lesson 3: Spatial Analysis
+
+In this section you will run some simple landscape ecology metrics to analyze your fusion maps and compare study regions.
+[Explain metric example]
+
+```{r}
+# Calculate LE metric and display output for both study regions
+# Compare study regions
+```
+
+Challenge: Calculate [another LE metric] and compare your study regions.
+
