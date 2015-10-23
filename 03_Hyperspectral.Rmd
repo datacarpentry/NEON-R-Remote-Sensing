@@ -92,6 +92,17 @@ library('plyr')
 
 ## Recommended Pre Lesson Reading
 
+## Notes for Formatting Lessons
+fill in outline for each module (think about story arc):
+with lesson obj
+lesson text/concept blocks
+chunk in programming steps
+Challenges
+organization:
+Objective
+Tutorial
+Functions
+Challenge
 
 
 
@@ -104,7 +115,37 @@ library('plyr')
 |Landsat Multispectral | Moderate (eg 30m)    | 6 broad bands    | ~22/year|
 |NEON hyperspectral | High (eg 1m)         | 424 FIXME narrow bands| 1-2/year|
 
-## Open 3 Datasets
+## Lesson 1: Opening and Exploring Multispectral and Hyperspectral Imagery
+
+To get started, we'll open an explore each of the three image datasets used in this module.
+
+``` {r}
+#code goes here
+```
+
+## Lesson 2: Spectral Signatures
+
+Here we'll learn about the spectrum and compare the information content in multi-v-hyper
+
+``` {r}
+#code goes here
+```
+
+## Lesson 3: Spectral Metrics
+
+Now that we understand the driving forces behind the spectrum, we can explore different ways of capturing that info.
+
+``` {r}
+#code goes here
+```
+
+## Lesson 4: Mapping Spectral Metrics
+
+Now we'll make a map of these metrics and use it to answer some questions.
+
+``` {r}
+#code goes here
+```
 
 
 ###  viz
