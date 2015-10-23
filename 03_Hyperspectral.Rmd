@@ -123,8 +123,6 @@ FIXME: need to add the cropping portions of the lesson
 
 ## Lesson 1: Opening and Exploring Multispectral and Hyperspectral Imagery
 
-Objective is XXX.
-
 To get started, we'll explore each of the three image datasets used in this module.
 First we'll open and display single bands from the high resolution RGB camera data. Then we'll combine these in a raster
 stack and display them in RGB.
@@ -197,21 +195,41 @@ moving forward.
 ## Lesson 3: Spectral Metrics
 
 Now that we understand the driving forces behind the spectrum, we can explore different ways of capturing that information.
-Spectral indices are a popular method for doing this. NDVI example.
+Spectral indices are a popular method for doing this. NDVI example. Because we have finer spectral resolution in IS data, we
+call these "narrowband indices" when calculated with IS data.
 
 ``` {r}
 # Calculate NDVI with the "Landsat" spectra
 # Calculate narrowband NDVI with the IS spectra
 # Compare values.
 ```
-One of the major benefits of IS data is that we can 
+Challenge: Here's the equation for INDEX-X. Calculate this for multispectral and IS spectra.
+
+One of the major benefits of IS data is that we can capture information from very specific bands.
+Red edge wavelength example
+
+```{r}
+# Calc red edge w/IS spectra
+   # Subset IS spectra to wavelength region of interest
+   # Calculate first derivative
+   # Find wavelength at which maximum derivative value occurs
+   # Compare resulting values
+```
+
+Challenge: Using the same approach, we'll find the wavelength of max absorption (i.e.,min value) in a lignin-cellulose feature (xx-xx nm)
+
+Another major benefit of IS data is creating a metric that reflects an actual physical measurement (e.g., how much water
+in this pixel). Equivalent Water Thickness.
+``` {r}
+# Adapt IDL code here
+```
 
 ## Lesson 4: Mapping Spectral Metrics
 
 Now we'll make a map of these metrics and use it to answer some questions.
 
 ``` {r}
-#code goes here
+# Same approach as in 
 ```
 
 
