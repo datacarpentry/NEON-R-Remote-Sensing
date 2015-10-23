@@ -168,6 +168,7 @@ Finally we will open and display the hyperspectral imagery.
 # read in HDF5 file
 # FIXME: examine metadata
 # FIXME: how to display an RGB composite AND extract spectral data from all bands
+```
 
 Challenge: Explore spectral variation within a tree crown, or within a field of grass. Select a new set of pixel locations (save to new variable) and plot the signatures. 
 
@@ -207,7 +208,7 @@ call these "narrowband indices" when calculated with IS data.
 Challenge: Here's the equation for INDEX-X. Calculate this for multispectral and IS spectra.
 
 One of the major benefits of IS data is that we can capture information from very specific bands.
-Red edge wavelength example
+Red edge wavelength example. Note that we CAN calculate this w/multispec data, but not very precise.
 
 ```{r}
 # Calc red edge w/IS spectra
@@ -220,9 +221,10 @@ Red edge wavelength example
 Challenge: Using the same approach, we'll find the wavelength of max absorption (i.e.,min value) in a lignin-cellulose feature (xx-xx nm)
 
 Another major benefit of IS data is creating a metric that reflects an actual physical measurement (e.g., how much water
-in this pixel). Equivalent Water Thickness.
+in this pixel). Equivalent Water Thickness. Note that we can't even try to calc this using this approach w/multispec
 ``` {r}
-# Adapt IDL code here
+# Adapt IDL code here into a function
+# Calculate EWT for the IS spectra
 ```
 
 ## Lesson 4: Mapping Spectral Metrics
@@ -230,9 +232,14 @@ in this pixel). Equivalent Water Thickness.
 Now we'll make a map of these metrics and use it to answer some questions.
 
 ``` {r}
-# Same approach as in 
+# Same approach as in lidar. Choose one index, calculate for entire image
+# Display index raster
+# Explore histogram thresholding to create a map.
 ```
 
+Challenge: Create a map using another metric.
+
+## BELOW HERE IS JUST NOTES:
 
 ###  viz
 Open
