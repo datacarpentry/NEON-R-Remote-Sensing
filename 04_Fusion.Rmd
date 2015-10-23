@@ -39,12 +39,12 @@ This activity will walk you through a simple example of combining information fr
 
 ##Goals / Objectives
 After completing this activity, you will know:
-(T) load and display raster products from both lidar and hyperspectral modules
-(T) plot hyperspectral metrics on CHM (3D surface)
-pixel-based correlation & scatter plot
-(T) combine the two data products to answer key questions
-(T) create summary stat report (total area statistics)
-(T) create landscape metric report (simple LE mets/spatial stats)
+* load and display raster products from both lidar and hyperspectral modules
+* plot hyperspectral metrics on CHM (3D surface)
+* pixel-based correlation & scatter plot
+* combine the two data products to answer key questions
+* create summary stat report (total area statistics)
+* create landscape metric report (simple LE mets/spatial stats)
 
 
 
