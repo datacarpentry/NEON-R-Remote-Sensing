@@ -31,19 +31,18 @@ comments: true
 </section><!-- /#table-of-contents -->
 
 ##About
-This activity will walk you through the fundamental principles of working 
-with raster data in R.
+This section introduces the Remote Sensing Module and gives some links to important background information that may be useful. For this module you should already be reasonably familiar with raster data, vector data, time series data, and creating maps/plots in R. If you attened the data carpentry workshop on geospatial data, you're in good shape. If not, or if you need to review, below are links to the lessons and activites from that workshop. 
 
 **R Skill Level:** Intermediate - you've got the basics of `R` down.
 
 <div id="objectives">
 
 <h3>Goals / Objectives</h3>
-After completing this activity, you will know:
+After completing the Remote Sensing Module, you will know:
 <ol>
-<li>What a raster dataset is and its fundamental attributes.</li>
-<li>How to import rasters into `R` using the raster library.</li>
-<li>How to perform raster calculations in `R`.</li>
+<li>The basics of remote sensing in visible, multispectral, and hyperspectral and their relative benefits</li>
+<li>How to work with remote sensing data in R</li>
+<li>How to work with LiDAR data in R</li>
 </ol>
 
 <h3>Things You'll Need To Complete This Lesson</h3>
@@ -86,15 +85,23 @@ Read more about the `raster` package in R.</a>
 </ul>
 </div>
 
-#About Raster Data
-Raster or "gridded" data are data that are saved in pixels. In the spatial world, 
-each pixel represents an area on the Earth's surface. For example in the raster 
-below, each pixel represents a particular land cover class that would be found in 
-that location in the real world. 
-<a href="{{ site.baseurl }}/GIS-Spatial-Data/Working-With-Rasters/"> More on 
-rasters here</a>. 
+#Basics of Working with Spatial Data
 
-```{r chunk-1}
-#code will go here! 
+<a href="https://github.com/data-lessons/NEON-R-Spatial-Data-Intro"> NEON + Data Carpentry lessons on working with spatial data.</a>
 
-```
+#Raster Data
+
+<a href="https://github.com/data-lessons/NEON-R-Spatial-Raster"> NEON + Data Carpentry Lessons on rasters here.</a>
+
+#Vector Data
+For this module you should already be reasonably familiar with vector data. 
+<a href="https://github.com/data-lessons/NEON-R-Spatial-Raster"> NEON + Data Carpentry lessons on vectors here.</a>
+
+#Time Series Data
+
+<a href="https://github.com/data-lessons/NEON-R-Tabular-Time-Series"> NEON + Data Carpentry lessons on time series spatial data.</a>
+
+#Creating Maps/Plots
+
+<a href="https://github.com/data-lessons/NEON-R-Make-Pretty-Maps-Plots"> NEON + Data Carpentry lessons on creating maps and plots with spatial data in R.</a>
+
