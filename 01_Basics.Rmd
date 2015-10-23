@@ -85,23 +85,23 @@ Read more about the `raster` package in R.</a>
 </ul>
 </div>
 
-#Basics of Working with Spatial Data
+##Basics of Working with Spatial Data
 
 <a href="https://github.com/data-lessons/NEON-R-Spatial-Data-Intro"> NEON + Data Carpentry lessons on working with spatial data.</a>
 
-#Raster Data
+##Raster Data
 
 <a href="https://github.com/data-lessons/NEON-R-Spatial-Raster"> NEON + Data Carpentry Lessons on rasters here.</a>
 
-#Vector Data
-For this module you should already be reasonably familiar with vector data. 
+##Vector Data
+
 <a href="https://github.com/data-lessons/NEON-R-Spatial-Raster"> NEON + Data Carpentry lessons on vectors here.</a>
 
-#Time Series Data
+##Time Series Data
 
 <a href="https://github.com/data-lessons/NEON-R-Tabular-Time-Series"> NEON + Data Carpentry lessons on time series spatial data.</a>
 
-#Creating Maps/Plots
+##Creating Maps/Plots
 
 <a href="https://github.com/data-lessons/NEON-R-Make-Pretty-Maps-Plots"> NEON + Data Carpentry lessons on creating maps and plots with spatial data in R.</a>
 
