@@ -1,0 +1,146 @@
+#JUST A MISHMASH OF STUFF TO WORK ON THE HYPERSPECTRAL
+
+setwd("C:/Dropbox/NEON_hackathon/data/")
+
+#source("http://bioconductor.org/biocLite.R") ; biocLite("rhdf5")
+#install.packages('raster')
+#install.packages('rgdal')
+#install.packages('maps')
+#install.packages('plyr')
+
+library(raster)
+library(rhdf5)
+library(rgdal)
+library(plyr)
+
+#this is the file that is lacking some hdf5 crs attributes
+f<-"SubsetNIS1_20130613_143801_atmcor.h5"  #is this file lacking crs and basic header info?
+#f<-"SJER_140123_chip.h5"
+  
+#METADATA STUFF
+h5ls(f,all=T) 
+#r get spatialInfo using the h5readAttributes function 
+spInfo <- h5readAttributes
+#r get attributes for the Reflectance dataset
+reflInfo <- h5readAttributes(f,"Reflectance")
+#read in the wavelength information from the HDF5 file
+wavelengths<- h5read(f,"wavelength")
+
+#get rows and cols
+#nRows <- reflInfo$row_col_band[1]
+#nCols <- reflInfo$row_col_band[2]
+#nBands <- reflInfo$row_col_band[3]
+
+#TEMPORARY HACK to GET ROWS/COLS/BANDS WITHOUT GOOD HDF!!!
+nRows = 161
+nCols = 166
+nBands = length(wavelengths)
+
+#find r,g,b wavelengths
+#r_idx <- wavelengths==0.68283 #b61
+#g_idx <- wavelengths==0.55259 #b35
+#b_idx <- wavelengths==0.49248 #b23
+
+#or just start from here
+b91<- h5read(f,"Reflectance",index=list(1:nCols,1:nRows,91))
+b61<- h5read(f,"Reflectance",index=list(1:nCols,1:nRows,61))
+b35<- h5read(f,"Reflectance",index=list(1:nCols,1:nRows,35))
+b23<- h5read(f,"Reflectance",index=list(1:nCols,1:nRows,23))
+#convert arrays to rasters and stack
+b91<-raster(b91[,,1])
+b61<-raster(b61[,,1])
+b35<-raster(b35[,,1])
+b23<-raster(b23[,,1])
+rgb_stack<-stack(b61,b35,b23)
+#scale image display by maximum value in stack
+image_scale<-max(maxValue(rgb_stack))
+#display image with linear stretch
+plotRGB(rgb_stack, r=1, g=2, b=3, scale=image_scale, stretch="lin")
+
+#spectral metrics
+#compute narrow-band NDVI
+ndvi = (b91-b61)/(b91+b61)
+plot(ndvi)
+
+#compute RVSI [(R712+R752)/2]-R732
+b67<- h5read(f,"Reflectance",index=list(1:nCols,1:nRows,67)) #0.71289
+b71<- h5read(f,"Reflectance",index=list(1:nCols,1:nRows,71)) #0.73292
+b75<- h5read(f,"Reflectance",index=list(1:nCols,1:nRows,75)) #0.75296
+#convert to raster
+b67<-raster(b67[,,1])
+b71<-raster(b71[,,1])
+b75<-raster(b75[,,1])
+rvsi = ((b67+b75)/2)-b71
+plot(rvsi)
+hist(rvsi)
+
+#max slope of red edge (680 nm - 730 nm from Portigal 1997)
+#get red edge bands
+re_idx = which(wavelengths>=0.680 & wavelengths<=0.730)
+re_bands<- h5read(f,"Reflectance",index=list(1:nCols,1:nRows,re_idx))
+
+#compute finite difference
+
+
+
+
+
+
+###################################
+
+#define coordinate reference system
+myCrs <- spInfo$projdef
+#define the resolution
+res <- spInfo$xscale
+
+#Populate the raster image extent value. 
+mapInfo<-h5read(f,"map info")
+#the map info string contains the lower left hand coordinates of our raster
+#let's grab those next
+# split out the individual components of the mapinfo string
+mapInfo<-unlist(strsplit(mapInfo, ","))
+
+#grab the utm coordinates of the lower left corner
+xMin<-as.numeric(mapInfo[4])
+yMax<-as.numeric(mapInfo[5]) 
+
+#grab the no data value
+myNoDataValue <- reflInfo$`data ignore value`
+
+# look at the metadata for the reflectance dataset
+h5readAttributes(f,"Reflectance")
+
+#plot the image
+image(b34)
+hist(b34,50)
+
+#what happens if we plot a log of the data?
+image(log(b34))
+
+#Plot range of reflectance values as a histogram to view range
+#and distribution of values.
+hist(b34,breaks=40,col="darkmagenta")
+
+#View low and high values only
+hist(b34,breaks=100,col="darkmagenta",xlim = c(0, 5000))
+hist(b34, breaks=40,col="darkmagenta",xlim = c(5000, 15000),ylim=c(0,100))
+
+#there is a no data value in our raster - let's define it
+myNoDataValue <- as.numeric(reflInfo$`data ignore value`)
+myNoDataValue
+  
+#set all values greater than 15,000 to NA
+b34[b34 == myNoDataValue] <- NA
+
+#spectral profile
+aPixel<- h5read(f,"Reflectance",index=list(54,36,NULL))
+
+#reshape the data and turn into dataframe
+b <- adply(aPixel,c(3))
+
+#create clean data frame
+aPixeldf <- b[2]
+
+
+#add wavelength data to matrix
+aPixeldf$Wavelength <- wavelengths
