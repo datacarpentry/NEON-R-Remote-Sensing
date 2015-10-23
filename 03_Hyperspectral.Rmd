@@ -117,11 +117,18 @@ Challenge
 
 ## Lesson 1: Opening and Exploring Multispectral and Hyperspectral Imagery
 
-To get started, we'll open an explore each of the three image datasets used in this module.
+Objective is XXX.
+
+To get started, we'll explore each of the three image datasets used in this module.
+First we'll open and 
 
 ``` {r}
-#code goes here
+# Open RGB camera image
+# Display single bands 
+# Create RGB stack
+# Display RGB stack
 ```
+Challenge:
 
 ## Lesson 2: Spectral Signatures
 
