@@ -18,6 +18,7 @@ permalink: /R/Raster-Data-In-R/
 code1: /R/2015-07-22-Introduction-to-Raster-Data-In-R.R
 comments: true
 
+
 ---
 
 <section id="table-of-contents" class="toc">
@@ -34,7 +35,7 @@ comments: true
 
 ## About
 
-## R Skills Level
+## R Skills Level: need to know RS basics
 
 
 ## Goals and Objectives
