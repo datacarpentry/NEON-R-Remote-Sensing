@@ -379,7 +379,7 @@ headquarters. The entire dataset can be accessed by request from the NEON websit
 The Relationship Between Raster Resolution, Spatial extent & Number of Pixels - in R</a>
 </li>
 <li>
-<a href="http://cran.r-project.org/web/packages/raster/raster.pdf" target="_blank">
+<a href="http://cran.r-project.org/package=raster" target="_blank">
 Read more about the `raster` package in R.</a>
 </li>
 </ul>
